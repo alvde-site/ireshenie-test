@@ -15,7 +15,8 @@ function ChangePassword() {
         action="#"
         name="changepasswordform"
       >
-        <img className={stylesChangePasswordForm.form__logo} src={logo} alt="Логотип"/>
+        <img className={stylesChangePasswordForm.logo} src={logo} alt="Логотип"/>
+        <h1 className={stylesChangePasswordForm.title}>Изменение пароля</h1>
         {/* <label htmlFor="postTitle" className={stylesAddPostForm.postform__item}>
           Заголовок отзыва:
         </label>
