@@ -15,32 +15,81 @@ function ChangePassword() {
         action="#"
         name="changepasswordform"
       >
-        <img className={stylesChangePasswordForm.logo} src={logo} alt="Логотип"/>
+        <img
+          className={stylesChangePasswordForm.logo}
+          src={logo}
+          alt="Логотип"
+        />
         <h1 className={stylesChangePasswordForm.title}>Изменение пароля</h1>
-        {/* <label htmlFor="postTitle" className={stylesAddPostForm.postform__item}>
-          Заголовок отзыва:
-        </label>
-        <input
-          type="text"
-          id="postTitle"
-          name="postTitle"
-          minLength={2}
-          maxLength={30}
-          value={nameRU}
-          onChange={onTitleChanged}
-          className={stylesAddPostForm.item}
-        />
-        <label htmlFor="postContent" className={stylesAddPostForm.item}>
-          Описание:
-        </label>
-        <textarea
-          id="postContent"
-          name="postContent"
-          value={description}
-          onChange={onContentChanged}
-          className={stylesAddPostForm.description}
-        />
-        <button
+        <fieldset className={stylesChangePasswordForm.field}>
+          <input
+            type="text"
+            id="login"
+            name="login"
+            minLength={1}
+            // value={nameRU}
+            // onChange={onTitleChanged}
+            className={stylesChangePasswordForm.input}
+            placeholder="Email / Логин"
+            required
+          />
+          <span className={stylesChangePasswordForm.error}>
+            Поле должно быть заполнено
+          </span>
+        </fieldset>
+
+        <fieldset className={stylesChangePasswordForm.field}>
+          <input
+            type="text"
+            id="control"
+            name="control"
+            minLength={1}
+            // value={nameRU}
+            // onChange={onTitleChanged}
+            className={stylesChangePasswordForm.input}
+            placeholder="Контрольная строка"
+            required
+          />
+          <span className={stylesChangePasswordForm.error}>
+            Неверное контрольное слово
+          </span>
+        </fieldset>
+
+        <fieldset className={stylesChangePasswordForm.field}>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            minLength={6}
+            // value={nameRU}
+            // onChange={onTitleChanged}
+            className={stylesChangePasswordForm.input}
+            placeholder="Новый пароль"
+            required
+          />
+          <span className={stylesChangePasswordForm.error}>
+            Пароль должен быть не менее 6 символов
+          </span>
+        </fieldset>
+
+        <fieldset className={stylesChangePasswordForm.field}>
+          <input
+            type="password"
+            id="confirmation"
+            name="confirmation"
+            minLength={6}
+            // value={nameRU}
+            // onChange={onTitleChanged}
+            className={stylesChangePasswordForm.input}
+            placeholder="Подтверждение пароля"
+            required
+          />
+          <span className={stylesChangePasswordForm.error}>
+            Пароли не совпадают
+          </span>
+        </fieldset>
+
+        {/* <button
           type="submit"
           className={canSave?stylesAddPostForm.button:stylesAddPostForm.disabled}
           disabled={!canSave}
@@ -51,6 +100,6 @@ function ChangePassword() {
       </form>
     </section>
   );
-};
+}
 
 export default ChangePassword;
