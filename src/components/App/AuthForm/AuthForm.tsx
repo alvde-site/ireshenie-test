@@ -1,46 +1,20 @@
 import React from "react";
-// import stylesAuthPostForm from "../../components/AuthPostForm/AuthPostForm.module.css";
-// import { useAppDispatch, useAppSelector } from "../../utils/hooks";
-// import { postAdded } from "../../services/reducers/postsSlice";
+import stylesAuthForm from "./AuthForm.module.css";
 
 export const AuthForm = () => {
-  // const [description, setDescription] = useState("");
-  // const [nameRU, setNameRU] = useState("");
-
-  // const dispatch = useAppDispatch();
-
-  // const author = useAppSelector((state) =>
-  //   state.users.find((user) => user.id === userId)
-  // );
-
-  // const onSavePostClick = (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   author && setNameRU(author.name);
-  //   if (description && nameRU && userId) {
-  //     dispatch(postAdded(description, nameRU, userId));
-  //   }
-
-  //   setDescription("");
-  //   setNameRU("");
-  // };
-
-  // const onTitleChanged = (e: React.ChangeEvent<HTMLInputElement>) =>
-  //   setNameRU(e.target.value);
-  // const onContentChanged = (e: React.ChangeEvent<HTMLTextAreaElement>) =>
-  //   setDescription(e.target.value);
-
-  // const canSave = Boolean(description) && Boolean(nameRU) && Boolean(userId);
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+  }
 
   return (
-    <section>
-      форма
-      {/* <form
-        className={stylesAddPostForm.postform}
-        onSubmit={onSavePostClick}
+    <section className={stylesAuthForm.auth}>
+      <form
+        className={stylesAuthForm.form}
+        onSubmit={handleSubmit}
         action="#"
-        name="addform"
+        name="authform"
       >
-        <label htmlFor="postTitle" className={stylesAddPostForm.postform__item}>
+        {/* <label htmlFor="postTitle" className={stylesAddPostForm.postform__item}>
           Заголовок отзыва:
         </label>
         <input
@@ -70,8 +44,8 @@ export const AuthForm = () => {
           onClick={handleScroll}
         >
           Сохранить отзыв
-        </button>
-      </form> */}
+        </button> */}
+      </form>
     </section>
   );
 };

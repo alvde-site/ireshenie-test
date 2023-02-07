@@ -1,46 +1,16 @@
-/* .auth {
-  box-sizing: border-box;
-  background: #e4ddb6;
-}
-
-.title {
-  margin: 0;
-  text-align: center;
-}
-
-.authform {
+.auth {
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  padding: 20px;
-  max-width: 372px;
-  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
 }
 
-.select {
-  margin-top: 10px;
-  height: 30px;
-}
 
-.button {
-  background: #1976d2;
-  color: white;
-  border-radius: 4px;
-  font-weight: 700;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  margin-top: 40px;
+.form {
+  width: 100%;
+  max-width: 500px;
+  min-height: 724px;
+  box-shadow: 4px 4px 25px rgba(14, 76, 121, 0.18);
+  border-radius: 10px;
 }
-
-.button:hover {
-  opacity: 0.5;
-}
-
-.button_disabled {
-  background: #aaa;
-  color: white;
-  border-radius: 4px;
-  font-weight: 700;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  margin-top: 40px;
-} */
