@@ -1,19 +1,21 @@
 import React from "react";
-import stylesAuthForm from "./AuthForm.module.css";
+import stylesChangePasswordForm from "./ChangePassword.module.css";
+import logo from "../../../images/logo.png";
 
-export const AuthForm = () => {
+function ChangePassword() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
   }
 
   return (
-    <section className={stylesAuthForm.auth}>
+    <section className={stylesChangePasswordForm.auth}>
       <form
-        className={stylesAuthForm.form}
+        className={stylesChangePasswordForm.form}
         onSubmit={handleSubmit}
         action="#"
-        name="authform"
+        name="changepasswordform"
       >
+        <img className={stylesChangePasswordForm.form__logo} src={logo} alt="Логотип"/>
         {/* <label htmlFor="postTitle" className={stylesAddPostForm.postform__item}>
           Заголовок отзыва:
         </label>
@@ -49,3 +51,5 @@ export const AuthForm = () => {
     </section>
   );
 };
+
+export default ChangePassword;

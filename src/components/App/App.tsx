@@ -1,6 +1,6 @@
 import React from "react";
 import stylesApp from "./App.module.css";
-import { AuthForm } from "./AuthForm/AuthForm";
+import ChangePassword from "./ChangePassword/ChangePassword";
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 
@@ -9,7 +9,7 @@ function App() {
     <div className={stylesApp.page}>
       <Header />
       <main>
-        <AuthForm />
+        <ChangePassword />
       </main>
       <Footer />
     </div>
