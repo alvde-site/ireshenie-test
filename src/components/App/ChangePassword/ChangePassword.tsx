@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import stylesChangePasswordForm from "./ChangePassword.module.css";
 import logo from "../../../images/logo.png";
 import { useFormWithValidation } from "../../../utils/formValidator";
@@ -11,6 +11,7 @@ import {
 } from "../../../utils/constants";
 
 function ChangePassword() {
+  const [type, setType] = useState("password");
   const {
     values,
     handleChange,
@@ -60,6 +61,10 @@ function ChangePassword() {
     handleChange(e);
   }
 
+  function handleShowPassword() {
+    type === "password" ? setType("text") : setType("password");
+  }
+
   return (
     <section className={stylesChangePasswordForm.auth}>
       <form
@@ -80,12 +85,10 @@ function ChangePassword() {
               type="text"
               id="login"
               name="login"
-              // minLength={1}
               value={values["login"] || ""}
               onChange={handleInputChange}
               className={stylesChangePasswordForm.input}
               placeholder="Email / Логин"
-              // required
             />
           </label>
           <span
@@ -102,12 +105,10 @@ function ChangePassword() {
               type="text"
               id="control"
               name="control"
-              // minLength={1}
               value={values["control"] || ""}
               onChange={handleInputChange}
               className={stylesChangePasswordForm.input}
               placeholder="Контрольная строка"
-              // required
             />
           </label>
           <span
@@ -122,20 +123,20 @@ function ChangePassword() {
         <fieldset className={stylesChangePasswordForm.field}>
           <label htmlFor="password" className={stylesChangePasswordForm.label}>
             <input
-              type="password"
+              type={type}
               id="password"
               name="password"
-              // minLength={6}
               value={values["password"] || ""}
               onChange={handleInputChange}
               className={stylesChangePasswordForm.input}
               placeholder="Новый пароль"
-              // required
             />
           </label>
           <button
+            type="button"
             className={stylesChangePasswordForm.showing}
             aria-label="Показать пароль"
+            onClick={handleShowPassword}
           ></button>
           <span
             className={`${stylesChangePasswordForm.error} ${
@@ -155,12 +156,10 @@ function ChangePassword() {
               type="password"
               id="confirmation"
               name="confirmation"
-              // minLength={6}
               value={values["confirmation"] || ""}
               onChange={handleInputChange}
               className={stylesChangePasswordForm.input}
               placeholder="Подтверждение пароля"
-              // required
             />
           </label>
           <span
