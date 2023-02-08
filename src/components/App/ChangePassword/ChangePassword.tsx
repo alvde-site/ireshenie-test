@@ -1,11 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import stylesChangePasswordForm from "./ChangePassword.module.css";
 import logo from "../../../images/logo.png";
 
 function ChangePassword() {
+  const [values, setValues] = useState({
+    login: "",
+    control: "",
+    password: "",
+    confirmation: "",
+  });
+  const [errors, setErrors] = useState({});
+
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
   }
+
+  const handleChange = (event: React.FormEvent) => {
+    if (!(event.target instanceof HTMLInputElement)) {
+      return;
+    }
+    const target = event.target;
+    const name = target.name;
+    const value = target.value;
+    setValues({ ...values, [name]: value });
+    setErrors({ ...errors, [name]: target.validationMessage });
+  };
+
+  // function validate() {
+  //   return true;
+  // }
 
   return (
     <section className={stylesChangePasswordForm.auth}>
@@ -28,8 +51,8 @@ function ChangePassword() {
               id="login"
               name="login"
               minLength={1}
-              // value={nameRU}
-              // onChange={onTitleChanged}
+              value={values.login || ""}
+              onChange={handleChange}
               className={stylesChangePasswordForm.input}
               placeholder="Email / Логин"
               required
@@ -47,8 +70,8 @@ function ChangePassword() {
               id="control"
               name="control"
               minLength={1}
-              // value={nameRU}
-              // onChange={onTitleChanged}
+              value={values.control || ""}
+              onChange={handleChange}
               className={stylesChangePasswordForm.input}
               placeholder="Контрольная строка"
               required
@@ -66,8 +89,8 @@ function ChangePassword() {
               id="password"
               name="password"
               minLength={6}
-              // value={nameRU}
-              // onChange={onTitleChanged}
+              value={values.control || ""}
+              onChange={handleChange}
               className={stylesChangePasswordForm.input}
               placeholder="Новый пароль"
               required
@@ -92,8 +115,8 @@ function ChangePassword() {
               id="confirmation"
               name="confirmation"
               minLength={6}
-              // value={nameRU}
-              // onChange={onTitleChanged}
+              value={values.control || ""}
+              onChange={handleChange}
               className={stylesChangePasswordForm.input}
               placeholder="Подтверждение пароля"
               required
@@ -114,8 +137,16 @@ function ChangePassword() {
           className={stylesChangePasswordForm.submit}
         />
         <ul className={stylesChangePasswordForm.links}>
-          <li><a href="!#" className={stylesChangePasswordForm.link}>Зарегистироваться</a></li>
-          <li><a href="!#"className={stylesChangePasswordForm.link}>Войти</a></li>
+          <li>
+            <a href="!#" className={stylesChangePasswordForm.link}>
+              Зарегистироваться
+            </a>
+          </li>
+          <li>
+            <a href="!#" className={stylesChangePasswordForm.link}>
+              Войти
+            </a>
+          </li>
         </ul>
       </form>
     </section>
