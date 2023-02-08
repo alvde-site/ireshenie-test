@@ -9,10 +9,17 @@ function ChangePassword() {
     password: "",
     confirmation: "",
   });
-  const [errors, setErrors] = useState({});
+
+  const [isValid, setIsValid] = useState(true);
+
+  function validate() {
+    setIsValid(false);
+  }
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    validate();
+    
   }
 
   const handleChange = (event: React.FormEvent) => {
@@ -23,7 +30,6 @@ function ChangePassword() {
     const name = target.name;
     const value = target.value;
     setValues({ ...values, [name]: value });
-    setErrors({ ...errors, [name]: target.validationMessage });
   };
 
   // function validate() {
@@ -58,7 +64,7 @@ function ChangePassword() {
               required
             />
           </label>
-          <span className={stylesChangePasswordForm.error}>
+          <span className={`${stylesChangePasswordForm.error} ${isValid&&stylesChangePasswordForm.error_hidden}`}>
             Поле должно быть заполнено
           </span>
         </fieldset>
@@ -77,7 +83,7 @@ function ChangePassword() {
               required
             />
           </label>
-          <span className={stylesChangePasswordForm.error}>
+          <span className={`${stylesChangePasswordForm.error} ${isValid&&stylesChangePasswordForm.error_hidden}`}>
             Неверное контрольное слово
           </span>
         </fieldset>
@@ -89,7 +95,7 @@ function ChangePassword() {
               id="password"
               name="password"
               minLength={6}
-              value={values.control || ""}
+              value={values.password || ""}
               onChange={handleChange}
               className={stylesChangePasswordForm.input}
               placeholder="Новый пароль"
@@ -100,7 +106,7 @@ function ChangePassword() {
             className={stylesChangePasswordForm.showing}
             aria-label="Показать пароль"
           ></button>
-          <span className={stylesChangePasswordForm.error}>
+          <span className={`${stylesChangePasswordForm.error} ${isValid&&stylesChangePasswordForm.error_hidden}`}>
             Пароль должен быть не менее 6 символов
           </span>
         </fieldset>
@@ -115,14 +121,14 @@ function ChangePassword() {
               id="confirmation"
               name="confirmation"
               minLength={6}
-              value={values.control || ""}
+              value={values.confirmation || ""}
               onChange={handleChange}
               className={stylesChangePasswordForm.input}
               placeholder="Подтверждение пароля"
               required
             />
           </label>
-          <span className={stylesChangePasswordForm.error}>
+          <span className={`${stylesChangePasswordForm.error} ${isValid&&stylesChangePasswordForm.error_hidden}`}>
             Пароли не совпадают
           </span>
         </fieldset>
