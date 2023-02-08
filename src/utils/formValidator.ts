@@ -4,7 +4,7 @@ import React, { useCallback } from "react";
 export function useFormWithValidation() {
   const [values, setValues] = React.useState({});
   const [errors, setErrors] = React.useState({});
-  const [isValid, setIsValid] = React.useState(false);
+  const [isValid, setIsValid] = React.useState(true);
 
   const handleChange = (event: React.FormEvent) => {
     if (!(event.target instanceof HTMLInputElement)) {
@@ -15,7 +15,6 @@ export function useFormWithValidation() {
     const value = target.value;
     setValues({ ...values, [name]: value });
     setErrors({ ...errors, [name]: target.validationMessage });
-    setIsValid((target.closest("form") as HTMLFormElement).checkValidity());
   };
 
   const resetForm = useCallback(
@@ -27,5 +26,5 @@ export function useFormWithValidation() {
     [setValues, setErrors, setIsValid]
   );
 
-  return { values, handleChange, errors, isValid, setIsValid, resetForm };
+  return { values, handleChange, errors, setErrors, isValid, setIsValid, resetForm };
 }
