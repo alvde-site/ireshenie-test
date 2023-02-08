@@ -5,7 +5,7 @@ interface IValues {
     confirmation?: string;
   }
   
-  interface IErrors {
+  export interface IErrors {
     login?: string;
     control?: string;
     password?: string;

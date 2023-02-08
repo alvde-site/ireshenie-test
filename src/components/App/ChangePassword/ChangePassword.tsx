@@ -2,8 +2,13 @@ import React from "react";
 import stylesChangePasswordForm from "./ChangePassword.module.css";
 import logo from "../../../images/logo.png";
 import { useFormWithValidation } from "../../../utils/formValidator";
-import { IFormValidator } from "../../../utils/interfaces";
-import { loginError, controlError, passwordError, passwordConfirmationError } from "../../../utils/constants";
+import { IErrors, IFormValidator } from "../../../utils/interfaces";
+import {
+  loginError,
+  controlError,
+  passwordError,
+  passwordConfirmationError,
+} from "../../../utils/constants";
 
 function ChangePassword() {
   const {
@@ -15,33 +20,37 @@ function ChangePassword() {
     setIsValid,
   }: IFormValidator = useFormWithValidation();
 
-  console.log(errors)
-
   function validate() {
+    let errorsMessages: IErrors = {};
+    let isCorrect = true;
     if (!values["login"]) {
-      setErrors({ ...errors, login: loginError });
-      setIsValid(false);
+      errorsMessages["login"] = loginError;
+      isCorrect = false;
     }
     if (values["control"] !== "abc") {
-      setErrors({ ...errors, control: controlError });
-      setIsValid(false);
+      errorsMessages["control"] = controlError;
+      isCorrect = false;
     }
-    if (values["password"] && values["password"].length < 6) {
-      setErrors({ ...errors, password: passwordError });
-      setIsValid(false);
+    if (!values["password"]) {
+      errorsMessages["password"] = passwordError;
+      isCorrect = false;
+    } else if (values["password"] && values["password"].length < 6) {
+      errorsMessages["password"] = passwordError;
+      isCorrect = false;
     }
     if (values["password"] !== values["confirmation"]) {
-      setErrors({ ...errors, confirmation: passwordConfirmationError });
-      setIsValid(false);
+      errorsMessages["confirmation"] = passwordConfirmationError;
+      isCorrect = false;
     }
-    
+    setErrors(errorsMessages);
+    setIsValid(isCorrect);
   }
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     validate();
-    if (isValid) {
-      
+    if(!isValid) {
+      console.log("Пароль успешно изменен");
     }
   }
 
@@ -81,9 +90,10 @@ function ChangePassword() {
             className={`${stylesChangePasswordForm.error} ${
               isValid && stylesChangePasswordForm.error_hidden
             }`}
-          >{errors.login}</span>
+          >
+            {errors.login}
+          </span>
         </fieldset>
-
         <fieldset className={stylesChangePasswordForm.field}>
           <label htmlFor="control" className={stylesChangePasswordForm.label}>
             <input
@@ -102,7 +112,9 @@ function ChangePassword() {
             className={`${stylesChangePasswordForm.error} ${
               isValid && stylesChangePasswordForm.error_hidden
             }`}
-          >{errors.control}</span>
+          >
+            {errors.control}
+          </span>
         </fieldset>
 
         <fieldset className={stylesChangePasswordForm.field}>
@@ -127,7 +139,9 @@ function ChangePassword() {
             className={`${stylesChangePasswordForm.error} ${
               isValid && stylesChangePasswordForm.error_hidden
             }`}
-          >{errors.password}</span>
+          >
+            {errors.password}
+          </span>
         </fieldset>
 
         <fieldset className={stylesChangePasswordForm.field}>
@@ -151,7 +165,9 @@ function ChangePassword() {
             className={`${stylesChangePasswordForm.error} ${
               isValid && stylesChangePasswordForm.error_hidden
             }`}
-          >{errors.confirmation}</span>
+          >
+            {errors.confirmation}
+          </span>
         </fieldset>
 
         <div className={stylesChangePasswordForm.note}>
