@@ -19,4 +19,5 @@ interface IValues {
     setIsValid: (value: boolean) => void;
     setErrors: (value: IErrors) => void;
     handleChange: (event: React.FormEvent)=> void;
+    resetForm: () => void;
   }

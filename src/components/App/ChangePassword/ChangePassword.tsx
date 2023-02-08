@@ -18,6 +18,7 @@ function ChangePassword() {
     setErrors,
     isValid,
     setIsValid,
+    resetForm,
   }: IFormValidator = useFormWithValidation();
 
   function validate() {
@@ -44,13 +45,14 @@ function ChangePassword() {
     }
     setErrors(errorsMessages);
     setIsValid(isCorrect);
+    return isCorrect;
   }
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    validate();
-    if(!isValid) {
-      console.log("Пароль успешно изменен");
+    if (validate()) {
+      resetForm();
+      alert("Пароль успешно изменен");
     }
   }
 
