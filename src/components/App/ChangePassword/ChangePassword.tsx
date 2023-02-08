@@ -73,6 +73,10 @@ function ChangePassword() {
               required
             />
           </label>
+          <button
+            className={stylesChangePasswordForm.showing}
+            aria-label="Показать пароль"
+          ></button>
           <span className={stylesChangePasswordForm.error}>
             Пароль должен быть не менее 6 символов
           </span>
@@ -100,14 +104,19 @@ function ChangePassword() {
           </span>
         </fieldset>
 
-        {/* <button
+        <div className={stylesChangePasswordForm.note}>
+          <span className={stylesChangePasswordForm.notestar}>*</span>
+          <p className={stylesChangePasswordForm.notetext}>Обязательные поля</p>
+        </div>
+        <input
           type="submit"
-          className={canSave?stylesAddPostForm.button:stylesAddPostForm.disabled}
-          disabled={!canSave}
-          onClick={handleScroll}
-        >
-          Сохранить отзыв
-        </button> */}
+          value="Изменить пароль"
+          className={stylesChangePasswordForm.submit}
+        />
+        <ul className={stylesChangePasswordForm.links}>
+          <li><a href="!#" className={stylesChangePasswordForm.link}>Зарегистироваться</a></li>
+          <li><a href="!#"className={stylesChangePasswordForm.link}>Войти</a></li>
+        </ul>
       </form>
     </section>
   );
